@@ -97,6 +97,12 @@ describe("moji.cores", () => {
             "ＡＢＣＤ　０１２３４あいうｱｲｳABCD 01234ｱｲｳ");
     });
 
+    it("全角長音記号から半角長音記号", () => {
+        assert.strictEqual(
+            moji("ー").convert("ZKtoHK").toString(),
+            "ｰ");
+    });
+
     it("半角カナから全角カナ arg2", () => {
         assert.strictEqual(
             moji("ＡＢＣＤ　０１２３４あいうアイウABCD 01234ｱｲｳ").convert("HK", "ZK").toString(),
@@ -107,6 +113,12 @@ describe("moji.cores", () => {
         assert.strictEqual(
             moji("ＡＢＣＤ　０１２３４あいうアイウABCD 01234ｱｲｳ").convert("HKtoZK").toString(),
             "ＡＢＣＤ　０１２３４あいうアイウABCD 01234アイウ");
+    });
+
+    it("半角長音記号から全角長音記号", () => {
+        assert.strictEqual(
+            moji("ｰ").convert("HKtoZK").toString(),
+            "ー");
     });
 
     it("複数の文字種を置換 arg2", () => {
